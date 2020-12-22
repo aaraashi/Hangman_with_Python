@@ -15,3 +15,32 @@ def get_valid_word(words):
 
     return word.upper()
 
+def play():
+    word = get_valid_word(words)
+    letters = set(word)
+    alphabet = set(string.ascii_uppercase)
+    used_letters = set()
+
+    # get user input 
+    while len(letters) > 0:
+        print ('You have used these letters: ', ''.join(used_letters))
+
+        guess = input('Guess a letter: ').upper()
+        if guess in alphabet - used_letters: 
+            used_letters.add(guess)
+            if guess in letters:
+             letters.remove(guess)
+        
+        elif guess in used_letters:
+            print('You have already used the letter. Please try again.')
+
+        else:
+            print('Invalid character. Please try again')
+
+
+if __name__ == '__main__':
+    play()
+
+
+
+
